@@ -7,14 +7,12 @@ import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.world.meta.BlockStateRegistry;
 import net.kelton555.hyperenergy.block.state.EnergyStorageState;
 import net.kelton555.hyperenergy.block.state.SimpleEnergyProviderState;
-import net.kelton555.hyperenergy.energy.EnergyRegistry;
 import net.kelton555.hyperenergy.interactions.ReadEnergyInteraction;
 
 import javax.annotation.Nonnull;
 
 public class HyperEnergy extends JavaPlugin {
     public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
-    private static final EnergyRegistry ENERGY_REGISTRY = new EnergyRegistry();
 
     public HyperEnergy(@Nonnull JavaPluginInit init) {
         super(init);
@@ -36,6 +34,6 @@ public class HyperEnergy extends JavaPlugin {
 
     @Override
     protected void shutdown() {
-        ENERGY_REGISTRY.wipeRegistry();
+        EnergyRegistry.wipeRegistry();
     }
 }

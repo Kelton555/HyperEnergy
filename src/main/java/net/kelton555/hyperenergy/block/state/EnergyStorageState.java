@@ -8,8 +8,8 @@ import com.hypixel.hytale.server.core.asset.type.blocktype.config.BlockType;
 import com.hypixel.hytale.server.core.asset.type.blocktype.config.StateData;
 import com.hypixel.hytale.server.core.universe.world.meta.BlockState;
 
+import net.kelton555.hyperenergy.EnergyRegistry;
 import net.kelton555.hyperenergy.energy.*;
-import org.jspecify.annotations.NonNull;
 
 import javax.annotation.Nonnull;
 
