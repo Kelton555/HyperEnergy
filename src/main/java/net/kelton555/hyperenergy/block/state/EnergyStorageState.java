@@ -13,6 +13,15 @@ import org.jspecify.annotations.NonNull;
 
 import javax.annotation.Nonnull;
 
+/*
+    When extending the class, you can use the variable 'initialized' in the initialize function to do one time initializations from blockdata
+    Because of the way this is handled, you MUST include:
+        if (this.getClass() == {YOUR_CLASS}.class) {
+           initialized = true;
+        }
+    Somewhere in your initialize function, otherwise things will act up
+*/
+
 // Extend this class for more complicated energy using blocks
 public class EnergyStorageState extends BlockState implements IEnergyStorage {
     public static final BuilderCodec<EnergyStorageState> CODEC = BuilderCodec.builder(EnergyStorageState.class, EnergyStorageState::new, BlockState.BASE_CODEC)
@@ -55,6 +64,7 @@ public class EnergyStorageState extends BlockState implements IEnergyStorage {
     protected boolean initialized = false;
 
     protected Data data;
+
 
     @Override
     public boolean initialize(BlockType blockType) {

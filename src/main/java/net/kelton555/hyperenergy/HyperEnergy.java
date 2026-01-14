@@ -18,7 +18,6 @@ public class HyperEnergy extends JavaPlugin {
 
     public HyperEnergy(@Nonnull JavaPluginInit init) {
         super(init);
-        ENERGY_REGISTRY.wipeRegistry();
     }
 
     @Override
@@ -34,4 +33,9 @@ public class HyperEnergy extends JavaPlugin {
 
     @Override
     protected void start() {}
+
+    @Override
+    protected void shutdown() {
+        ENERGY_REGISTRY.wipeRegistry();
+    }
 }
