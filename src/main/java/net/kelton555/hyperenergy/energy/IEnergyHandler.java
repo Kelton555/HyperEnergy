@@ -8,7 +8,7 @@ public interface IEnergyHandler {
      * @param simulate If true, only simulate the insertion (energy will not actually be accepted)
      * @return The amount of energy accepted IN THE TYPE PROVIDED AS energyType (may differ from amount of energy added to container)
      */
-    long insertEnergy(String energyType, long amount, boolean simulate) throws UnregisteredEnergyException;
+    long insertEnergy(String energyType, long amount, boolean simulate);
 
     /** Extracts an amount of energy of the given type, converting if applicable
      * @param energyType The energy id of the type of energy being provided
@@ -16,7 +16,7 @@ public interface IEnergyHandler {
      * @param simulate If true, only simulate the extraction (energy will not be removed from this container)
      * @return The amount of energy provided IN THE TYPE PROVIDED AS energyType (may differ from amount of energy removed from container)
      */
-    long extractEnergy(String energyType, long amount, boolean simulate) throws UnregisteredEnergyException;
+    long extractEnergy(String energyType, long amount, boolean simulate);
 
     /** Directly adds an amount of energy to this container, neglecting type checks and insertion limits
      * @param amount The amount to be added

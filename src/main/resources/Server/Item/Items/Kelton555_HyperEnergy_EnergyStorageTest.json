@@ -13,7 +13,8 @@
   "BlockType": {
     "State": {
       "Id": "Kelton555_HyperEnergy_EnergyStorageState",
-      "EnergyType": "HyperEnergy"
+      "EnergyType": "HyperEnergy",
+      "Energy": 1001
     },
     "Material": "Solid",
     "DrawType": "Cube",

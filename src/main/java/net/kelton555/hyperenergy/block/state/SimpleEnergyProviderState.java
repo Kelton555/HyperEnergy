@@ -1,7 +1,5 @@
 package net.kelton555.hyperenergy.block.state;
 
-import com.hypixel.hytale.codec.Codec;
-import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;
@@ -14,7 +12,6 @@ import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.chunk.WorldChunk;
 import com.hypixel.hytale.server.core.universe.world.chunk.state.TickableBlockState;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
-import net.kelton555.hyperenergy.energy.UnregisteredEnergyException;
 
 public class SimpleEnergyProviderState extends EnergyStorageState implements TickableBlockState {
     public static final BuilderCodec<SimpleEnergyProviderState> CODEC = BuilderCodec.builder(SimpleEnergyProviderState.class, SimpleEnergyProviderState::new, EnergyStorageState.CODEC)
@@ -23,7 +20,15 @@ public class SimpleEnergyProviderState extends EnergyStorageState implements Tic
     @Override
     public boolean initialize(BlockType blockType) {
         if (super.initialize(blockType)) {
-            this.energy = this.data.maxEnergy;
+            if (!initialized) {
+                this.energy = this.data.maxEnergy;
+
+                // only set initialized if this is the highest level of initialization
+                if (this.getClass() == SimpleEnergyProviderState.class) {
+                    initialized = true;
+                }
+            }
+
             return true;
         } else {
             return false;
@@ -49,13 +54,9 @@ public class SimpleEnergyProviderState extends EnergyStorageState implements Tic
             final WorldChunk chunk = world.getChunkIfInMemory(ChunkUtil.indexChunkFromBlock(outputPos.x, outputPos.z));
 
             if (chunk != null && chunk.getState(outputPos.x, outputPos.y, outputPos.z) instanceof EnergyStorageState energyState) {
-                try {
-                    long removableEnergy = this.removeEnergy(this.maxExtract, true);
-                    long takenEnergy = energyState.insertEnergy(this.data.energyType, removableEnergy, false);
-                    this.removeEnergy(takenEnergy, false);
-                } catch (UnregisteredEnergyException e) {
-
-                }
+                long removableEnergy = this.removeEnergy(this.maxExtract, true);
+                long takenEnergy = energyState.insertEnergy(this.data.energyType, removableEnergy, false);
+                this.removeEnergy(takenEnergy, false);
             }
         }
     }

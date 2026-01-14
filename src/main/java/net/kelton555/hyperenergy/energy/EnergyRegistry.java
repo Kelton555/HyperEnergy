@@ -105,7 +105,12 @@ public class EnergyRegistry {
             if (energyIDFrom.equals(this.ENERGY_ID)) {
                 return energy;
             } else {
-                return (long) Math.ceil(energy / getFullRatio(energyIDFrom));
+                double ratio = getFullRatio(energyIDFrom);
+                if (ratio != 0.00d) {
+                    return (long) Math.ceil(energy / ratio);
+                } else {
+                    return 0;
+                }
             }
         }
     }

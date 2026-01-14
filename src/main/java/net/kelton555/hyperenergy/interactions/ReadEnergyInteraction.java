@@ -48,7 +48,7 @@ public class ReadEnergyInteraction extends SimpleBlockInteraction {
 
         if (player != null) {
             if (world.getState(pos.x, pos.y, pos.z, true) instanceof EnergyStorageState energyStorage) {
-                String message = String.format("Energy Type: %s%nCurrentEnergy: %d%nMaxEnergy: %d%nMaxInput/Output: %d/%d",
+                String message = String.format("Energy Type: %s\nCurrentEnergy: %d\nMaxEnergy: %d\nMaxInput/Output: %d/%d",
                         energyStorage.getEnergyType(),
                         energyStorage.getEnergy(),
                         energyStorage.getMaxEnergy(),

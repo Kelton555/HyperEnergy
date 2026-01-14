@@ -13,7 +13,9 @@
   "BlockType": {
     "State": {
       "Id": "Kelton555_HyperEnergy_SimpleEnergyProviderState",
-      "EnergyType": "HyperEnergy"
+      "EnergyType": "HyperEnergy",
+      "MaxEnergy": 9999999999999,
+      "Energy": 500000
     },
     "Material": "Solid",
     "DrawType": "Cube",
