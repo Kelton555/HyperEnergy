@@ -13,9 +13,6 @@ import net.kelton555.hyperenergy.interactions.ReadEnergyInteraction;
 import javax.annotation.Nonnull;
 
 public class HyperEnergy extends JavaPlugin {
-    public static final String GROUP = "Kelton555";
-    public static final String NAME = "HyperEnergy";
-
     public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
     private static final EnergyRegistry ENERGY_REGISTRY = new EnergyRegistry();
 
@@ -26,8 +23,6 @@ public class HyperEnergy extends JavaPlugin {
 
     @Override
     protected void setup() {
-        LOGGER.atInfo().log("Hello Setup from %s version %s", this.getName(), this.getManifest().getVersion().toString());
-
         EnergyRegistry.register("HyperEnergy", 50000);
 
         final BlockStateRegistry blockStateRegistry = this.getBlockStateRegistry();
@@ -38,7 +33,5 @@ public class HyperEnergy extends JavaPlugin {
     }
 
     @Override
-    protected void start() {
-        LOGGER.atInfo().log("Hello Start from %s version %s", this.getName(), this.getManifest().getVersion().toString());
-    }
+    protected void start() {}
 }
